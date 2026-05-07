@@ -1,5 +1,5 @@
 import os
-from config import cfg
+from .config import cfg
 import argparse
 import logging
 from tqdm import tqdm
@@ -8,10 +8,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
-from datasets import make_dataloader
-from model import make_model
-from utils.logger import setup_logger
-from utils.metrics import R1_mAP_eval
+from .datasets import make_dataloader
+from .model import make_model
+from .utils.logger import setup_logger
+from .utils.metrics import R1_mAP_eval
 
 def draw_rank(query_imgs, rank_imgs, matchs, dst_file):
     n_row = len(rank_imgs)

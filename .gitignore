@@ -6,3 +6,5 @@ datasets
 
 export_onnx.py
 models/*.txt
+
+test_data.py

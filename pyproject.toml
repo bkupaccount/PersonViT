@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "matplotlib>=3.10.9",
     "onnx>=1.21.0",
     "onnxruntime>=1.25.1",
     "onnxscript>=0.7.0",

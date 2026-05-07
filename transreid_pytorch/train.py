@@ -1,16 +1,16 @@
-from utils.logger import setup_logger
-from datasets import make_dataloader
-from model import make_model
-from solver import make_optimizer, WarmupMultiStepLR
-from solver.scheduler_factory import create_scheduler
-from loss import make_loss
-from processor import do_train
+from .utils.logger import setup_logger
+from .datasets import make_dataloader
+from .model import make_model
+from .solver import make_optimizer, WarmupMultiStepLR
+from .solver.scheduler_factory import create_scheduler
+from .loss import make_loss
+from .processor import do_train
 import random
 import torch
 import numpy as np
 import os
 import argparse
-from config import cfg
+from .config import cfg
 import torch.distributed as dist
 
 def set_seed(seed):
