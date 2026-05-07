@@ -1,0 +1,8 @@
+__pycache__
+*.onnx
+*.pth
+datasets
+
+
+export_onnx.py
+models/*.txt

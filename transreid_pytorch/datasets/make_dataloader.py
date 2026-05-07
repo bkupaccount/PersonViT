@@ -10,6 +10,7 @@ from .msmt17 import MSMT17
 from .dukemtmcreid import DukeMTMCreID
 from .occ_duke import OCC_DukeMTMCreID
 from .sampler_ddp import RandomIdentitySampler_DDP
+from .custom_dataset import CustomMSMT17, CustomMarket1501
 import torch.distributed as dist
 from .mm import MM
 __factory = {
@@ -18,6 +19,8 @@ __factory = {
     'dukemtmc': DukeMTMCreID,
     'occ_duke': OCC_DukeMTMCreID,
     'mm': MM,
+    'cmsmt17': CustomMSMT17,
+    'cmarket1501': CustomMarket1501
 }
 
 def train_collate_fn(batch):
