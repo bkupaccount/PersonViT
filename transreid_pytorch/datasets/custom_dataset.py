@@ -7,9 +7,10 @@ from .bases import BaseImageDataset
 class CustomMSMT17(BaseImageDataset):
     dataset_dir = "MSMT17_V1"
 
-    def __init__(self, root="", verbose=True, pid_begin=0, **kwargs):
+    def __init__(self, root="", verbose=True, pid_begin=0, cam_begin=0, **kwargs):
         super(CustomMSMT17, self).__init__()
         self.pid_begin = pid_begin
+        self.cam_begin = cam_begin
         self.dataset_dir = osp.join(root, self.dataset_dir)
         self.train_dir = osp.join(self.dataset_dir, "bounding_box_train")
         self.query_dir = osp.join(self.dataset_dir, "query")
@@ -65,7 +66,7 @@ class CustomMSMT17(BaseImageDataset):
                 
                 img_path = osp.join(dir_path, img_path)
 
-                dataset.append((img_path, self.pid_begin+pid, camid-1, 1))
+                dataset.append((img_path, self.pid_begin+pid, self.cam_begin+camid-1, 1))
 
                 pid_container.add(pid)
                 cam_container.add(camid)
@@ -88,7 +89,7 @@ class CustomMSMT17(BaseImageDataset):
 class CustomMarket1501(BaseImageDataset):
     dataset_dir = "Market1501"
 
-    def __init__(self, root="", verbose=True, pid_begin=0, **kwargs):
+    def __init__(self, root="", verbose=True, pid_begin=0, cam_begin=0, **kwargs):
         super(CustomMarket1501, self).__init__()
         self.dataset_dir = osp.join(root, self.dataset_dir)
         self.train_dir = osp.join(self.dataset_dir, "bounding_box_train")
@@ -97,6 +98,7 @@ class CustomMarket1501(BaseImageDataset):
 
         self._check_before_run()
         self.pid_begin = pid_begin
+        self.cam_begin = cam_begin
         train = self._process_dir(self.train_dir, relabel=True)
         query = self._process_dir(self.query_dir, relabel=False)
         gallery = self._process_dir(self.gallery_dir, relabel=False)
@@ -155,6 +157,6 @@ class CustomMarket1501(BaseImageDataset):
             if relabel:
                 pid = pid2label[pid]
 
-            dataset.append((img_path, self.pid_begin+pid, camid, 1))
+            dataset.append((img_path, self.pid_begin+pid, self.cam_begin+camid, 1))
 
         return dataset
