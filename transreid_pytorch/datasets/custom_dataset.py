@@ -5,12 +5,13 @@ import os.path as osp
 from .bases import BaseImageDataset
 
 class CustomMSMT17(BaseImageDataset):
-    dataset_dir = "MSMT17_V1"
+    """CUSTOM MSMT17 LIKE DATASET"""
 
-    def __init__(self, root="", verbose=True, pid_begin=0, cam_begin=0, **kwargs):
+    def __init__(self, root="", dataset_dir="MSMT17_V1", verbose=True, pid_begin=0, cam_begin=0, **kwargs):
         super(CustomMSMT17, self).__init__()
         self.pid_begin = pid_begin
         self.cam_begin = cam_begin
+        self.dataset_dir = dataset_dir
         self.dataset_dir = osp.join(root, self.dataset_dir)
         self.train_dir = osp.join(self.dataset_dir, "bounding_box_train")
         self.query_dir = osp.join(self.dataset_dir, "query")
@@ -87,10 +88,11 @@ class CustomMSMT17(BaseImageDataset):
             raise RuntimeError(f"[ERROR] {self.gallery_dir} is not available")
 
 class CustomMarket1501(BaseImageDataset):
-    dataset_dir = "Market1501"
+    """CUSTOM MARKET1501 LIKE DATASET"""
 
-    def __init__(self, root="", verbose=True, pid_begin=0, cam_begin=0, **kwargs):
+    def __init__(self, root="", dataset_dir="Market1501", verbose=True, pid_begin=0, cam_begin=0, **kwargs):
         super(CustomMarket1501, self).__init__()
+        self.dataset_dir = dataset_dir
         self.dataset_dir = osp.join(root, self.dataset_dir)
         self.train_dir = osp.join(self.dataset_dir, "bounding_box_train")
         self.query_dir = osp.join(self.dataset_dir, "query")
